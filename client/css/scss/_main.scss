@@ -1,0 +1,8 @@
+@import 'variables';
+
+body{
+    color:$theme-text;
+    margin:0;
+    font-family: 'Montserrat', sans-serif !important;
+    background-color: $theme-bg;
+}

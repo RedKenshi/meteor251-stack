@@ -1,0 +1,23 @@
+@import 'variables';
+
+.main-container-navbar{
+    display: block;
+}
+.main-content-navbar{
+    margin-left: 5rem;
+    padding: 32px;
+}
+.page{
+    width: 100%;
+}
+.page-sidemenu{
+    display: grid;
+    gap:32px;
+    grid-template-columns: minmax(256px,auto) 1fr;
+}
+.side-menu-container{
+    place-self: stretch;
+}
+.page-content{
+    place-self: stretch;
+}

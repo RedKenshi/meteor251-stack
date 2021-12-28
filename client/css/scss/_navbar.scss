@@ -1,0 +1,115 @@
+.navbar{
+  height: 100%;
+  z-index: 1000;
+  position: fixed;
+  display: inline-block;
+  background-color: $theme-bg;
+  box-shadow: 1px 0 5px black;
+  width: 5rem;
+  transition: width 200ms ease;
+  & hr{
+    text-align: center;
+    width: 70%;
+    margin: 1rem auto;
+  }
+  &:hover{
+    width: 16rem;
+    & .link-text{
+      display: block !important;
+    }
+    & .nav-link-logo .svg{
+      transform: rotate(-180deg);
+    }
+  }
+  & .logo .nav-link-logo .svg{    
+    height: 2em;
+  }
+  & .navbar-nav {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding-inline-start: 0;
+    & .logo{
+      width:100%;
+      margin-top: 16px;
+      & .nav-link{
+        text-decoration: none;
+        display: grid;
+        grid-template-columns: 1fr 5rem;
+        text-transform: uppercase;
+        align-items: center;
+        height: 3.6rem;
+        & .link-text{
+          text-align: center;
+          display: none;
+          margin-left: 4rem;
+        }
+        & .svg{
+          text-align: center;
+          transition: transform 400ms;
+          margin: .5rem 0;
+          width: 5rem;
+          color:$theme-text;
+          & .fa-primary{
+            fill:$blue;
+          }
+          & .fa-secondary{
+            fill:$teal;
+          }
+        }
+      }
+    }
+    & .nav-item{
+      list-style: none;
+      cursor: pointer;
+      & .nav-link{
+        filter: grayscale(100%) opacity(.7);
+        text-decoration: none;
+        display: grid;
+        grid-template-columns: 5rem;
+        align-items: center;
+        height: 3.6rem;
+        & .link-text{
+          white-space: nowrap;
+          display: none;
+          grid-column-start: 2;
+          margin-left: 0 1.5rem;
+          color:$theme-text;
+        }
+        & .fafree{
+          width: 5rem !important;
+          text-align: center;
+          margin: .7rem 0;
+          width: 5rem;
+          font-size: 1.8em;
+        }
+        &:hover{
+          filter: grayscale(0%) brightness(1.1) opacity(.9);
+          transition: filter 500ms ease;
+          transition: background-color 200ms ease;
+          background-color: rgba(#000,.1);
+        }
+      }
+    }
+    & .nav-item:last-child{
+      margin-top: auto;
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.fafree.green{ color: $green;}
+.fafree.blue{ color: $blue;}
+.fafree.red{ color: $red;}
+.fafree.yellow{ color: $yellow;}
+.fafree.orange{ color: $orange;}
+.fafree.teal{ color: $teal;}
+.fafree.olive{ color: $olive;}
+.fafree.purple{ color: $purple;}
+.fafree.violet{ color: $violet;}
+.fafree.pink{ color: $pink;}
+.fafree.grey{ color: $grey;}
+.fafree.brown{ color: $brown;}

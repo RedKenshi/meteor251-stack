@@ -1,0 +1,197 @@
+/*COLORS FROM FLAT UI COLOR PALETTE 1*/
+/*COLORS FROM SEMANTIC UI REACT BUTTONS*/
+/*3 COLORS THEME*/
+/*SELECTED COLORS*/
+.main-container-navbar {
+  display: block;
+}
+
+.main-content-navbar {
+  margin-left: 5rem;
+  padding: 32px;
+}
+
+.page {
+  width: 100%;
+}
+
+.page-sidemenu {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: minmax(256px, auto) 1fr;
+}
+
+.side-menu-container {
+  place-self: stretch;
+}
+
+.page-content {
+  place-self: stretch;
+}
+
+/*COLORS FROM FLAT UI COLOR PALETTE 1*/
+/*COLORS FROM SEMANTIC UI REACT BUTTONS*/
+/*3 COLORS THEME*/
+/*SELECTED COLORS*/
+body {
+  color: #2d3436;
+  margin: 0;
+  font-family: "Montserrat", sans-serif !important;
+  background-color: #FCFCFC;
+}
+
+.navbar {
+  height: 100%;
+  z-index: 1000;
+  position: fixed;
+  display: inline-block;
+  background-color: #FCFCFC;
+  box-shadow: 1px 0 5px black;
+  width: 5rem;
+  transition: width 200ms ease;
+}
+.navbar hr {
+  text-align: center;
+  width: 70%;
+  margin: 1rem auto;
+}
+.navbar:hover {
+  width: 16rem;
+}
+.navbar:hover .link-text {
+  display: block !important;
+}
+.navbar:hover .nav-link-logo .svg {
+  transform: rotate(-180deg);
+}
+.navbar .logo .nav-link-logo .svg {
+  height: 2em;
+}
+.navbar .navbar-nav {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding-inline-start: 0;
+}
+.navbar .navbar-nav .logo {
+  width: 100%;
+  margin-top: 16px;
+}
+.navbar .navbar-nav .logo .nav-link {
+  text-decoration: none;
+  display: grid;
+  grid-template-columns: 1fr 5rem;
+  text-transform: uppercase;
+  align-items: center;
+  height: 3.6rem;
+}
+.navbar .navbar-nav .logo .nav-link .link-text {
+  text-align: center;
+  display: none;
+  margin-left: 4rem;
+}
+.navbar .navbar-nav .logo .nav-link .svg {
+  text-align: center;
+  transition: transform 400ms;
+  margin: 0.5rem 0;
+  width: 5rem;
+  color: #2d3436;
+}
+.navbar .navbar-nav .logo .nav-link .svg .fa-primary {
+  fill: #2185d0;
+}
+.navbar .navbar-nav .logo .nav-link .svg .fa-secondary {
+  fill: #00b5ad;
+}
+.navbar .navbar-nav .nav-item {
+  list-style: none;
+  cursor: pointer;
+}
+.navbar .navbar-nav .nav-item .nav-link {
+  filter: grayscale(100%) opacity(0.7);
+  text-decoration: none;
+  display: grid;
+  grid-template-columns: 5rem;
+  align-items: center;
+  height: 3.6rem;
+}
+.navbar .navbar-nav .nav-item .nav-link .link-text {
+  white-space: nowrap;
+  display: none;
+  grid-column-start: 2;
+  margin-left: 0 1.5rem;
+  color: #2d3436;
+}
+.navbar .navbar-nav .nav-item .nav-link .fafree {
+  width: 5rem !important;
+  text-align: center;
+  margin: 0.7rem 0;
+  width: 5rem;
+  font-size: 1.8em;
+}
+.navbar .navbar-nav .nav-item .nav-link:hover {
+  filter: grayscale(0%) brightness(1.1) opacity(0.9);
+  transition: filter 500ms ease;
+  transition: background-color 200ms ease;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.navbar .navbar-nav .nav-item:last-child {
+  margin-top: auto;
+  margin-bottom: 8px;
+}
+
+.fafree.green {
+  color: #21ba45;
+}
+
+.fafree.blue {
+  color: #2185d0;
+}
+
+.fafree.red {
+  color: #db2828;
+}
+
+.fafree.yellow {
+  color: #fbbd08;
+}
+
+.fafree.orange {
+  color: #f2711c;
+}
+
+.fafree.teal {
+  color: #00b5ad;
+}
+
+.fafree.olive {
+  color: #b5cc18;
+}
+
+.fafree.purple {
+  color: #a333c8;
+}
+
+.fafree.violet {
+  color: #6435c9;
+}
+
+.fafree.pink {
+  color: #e03997;
+}
+
+.fafree.grey {
+  color: #767676;
+}
+
+.fafree.brown {
+  color: #a5673f;
+}
+
+/*COLORS FROM FLAT UI COLOR PALETTE 1*/
+/*COLORS FROM SEMANTIC UI REACT BUTTONS*/
+/*3 COLORS THEME*/
+/*SELECTED COLORS*/

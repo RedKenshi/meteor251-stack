@@ -1,0 +1,147 @@
+@import '../_variables.scss';
+
+/*BUTTON*/
+.btn{
+    font-family: "Montserrat" sans-serif;
+    font-weight: 500;
+    opacity: .8;
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 8px 16px;
+    margin: 8px;
+    background-color: $base;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    color:$text-light;
+    &:hover{
+        background-color: $base-light
+    }
+    &.base{
+        color: $text
+    }
+    &.icon{
+        position: relative;
+        left: 0;
+        right: 0;
+        &.right{
+            padding-right: 3.2em;
+            & .fafree{
+                border-radius: 0 3px 3px 0;
+                left: auto;
+                right: 0;
+            }
+        }
+        &.left{
+            padding-left: 3.2em;
+            & .fafree{
+                border-radius: 3px 0 0 3px;
+                left: 0;
+                right: auto;
+            }
+        }
+        &.only{
+            padding-left: 1em;
+            & .fafree{
+                border-radius: 3px;
+            }
+        }
+    }
+    & .fafree{
+        position: absolute;
+        height: 100%;
+        top:0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0;
+        margin: 0;
+        width: 2.5em;
+        background-color: rgba(0,0,0,.12);
+    }
+    &.only .fafree{
+        position: relative;
+        background-color: rgba(0,0,0,0);
+        display: inline;
+        text-align: center;
+    }
+}
+
+.btn.green{
+    background-color:$green;
+    &:hover{
+        background-color:$green-light;
+    }
+}
+.btn.blue{
+    background-color:$blue;
+    &:hover{
+        background-color:$blue-light;
+    }
+}
+.btn.red{
+    background-color:$red;
+    &:hover{
+        background-color:$red-light;
+    }
+}
+.btn.yellow{
+    background-color:$yellow;
+    &:hover{
+        background-color:$yellow-light;
+    }
+}
+.btn.orange{
+    background-color:$orange;
+    &:hover{
+        background-color:$orange-light;
+    }
+}
+.btn.teal{
+    background-color:$teal;
+    &:hover{
+        background-color:$teal-light;
+    }
+}
+.btn.olive{
+    background-color:$olive;
+    &:hover{
+        background-color:$olive-light;
+    }
+}
+.btn.purple{
+    background-color:$purple;
+    &:hover{
+        background-color:$purple-light;
+    }
+}
+.btn.violet{
+    background-color:$violet;
+    &:hover{
+        background-color:$violet-light;
+    }
+}
+.btn.pink{
+    background-color:$pink;
+    &:hover{
+        background-color:$pink-light;
+    }
+}
+.btn.grey{
+    background-color:$grey;
+    &:hover{
+        background-color:$grey-light;
+    }
+}
+.btn.brown{
+    background-color:$brown;
+    &:hover{
+        background-color:$brown-light;
+    }
+}
+.btn.black{
+    background-color:$black;
+    &:hover{
+        background-color:$black-light;
+    }
+}

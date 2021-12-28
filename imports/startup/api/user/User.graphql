@@ -1,0 +1,36 @@
+type User{
+    _id: String
+    mail: String
+    isAdmin: Boolean
+    isOwner: Boolean
+    firstname: String
+    lastname: String
+    activated: Boolean
+    avatar: String
+}
+
+type QueryResultMessage{
+    status: Boolean!
+    message : String!
+}
+
+type QueryResultComplex{
+    status: Boolean!
+    message : String!
+    obj:String
+}
+
+type Query{
+    user: User
+    allUsers : [User]
+    accounts : [User]
+}
+
+type Mutation{
+    setAdmin(admin:String!,_id:String!): [QueryResultMessage]
+    unsetAdmin(admin:String!,_id:String!,societe:String!): [QueryResultMessage]
+    setOwner(owner:String!,_id:String!): [QueryResultMessage]
+    toggleActive(admin:String!,_id:String!): [QueryResultMessage]
+    deleteAccount(admin:String!,_id:String!): [QueryResultMessage]
+    setUserAvatar(_id:String!,avatar:String!): [QueryResultMessage]
+}

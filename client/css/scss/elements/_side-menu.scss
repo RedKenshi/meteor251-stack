@@ -1,0 +1,21 @@
+.side-menu{
+    & ul{
+        margin:0;
+        padding: 0;
+        & li{
+            margin-bottom: 12px;
+            padding: 8px;
+            border-radius: 3px;
+            cursor:pointer;
+            list-style: none;
+            border-bottom: 3px solid transparent;
+            &.active{
+                border-color: $blue;
+                background-color: rgba(0,0,0,.05);
+            }
+            &:hover{
+                background-color: rgba(0,0,0,.05);
+            }
+        }
+    }
+}
