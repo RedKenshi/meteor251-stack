@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react"
 import { UserContext } from '../../contexts/UserContext';
 import { gql } from 'graphql-tag';
-
+import AccountRow from "../molecules/AccountRow";
 
 export class Accounts extends Component {
 
@@ -10,7 +10,13 @@ export class Accounts extends Component {
     accountsRaw:[],
     accountsQuery : gql` query accounts {accounts {
       _id
+      firstname
+      lastname
       mail
+      isOwner
+      isAdmin
+      avatar
+      activated
     }}`
   }
 
@@ -31,48 +37,48 @@ export class Accounts extends Component {
 
   render() {
     return (
-      <div className="accounts page page-sidemenu">
-        <div className="side-menu-container">
-          <div className="side-menu">
-            <ul>
-              <li onClick={()=>this.setState({active:"accounts"})} className={this.state.active == "accounts" ? "active" : ""}>User Accounts</li>
-              <li onClick={()=>this.setState({active:"roles"})} className={this.state.active == "roles" ? "active" : ""}>User roles</li>
-              <li onClick={()=>this.setState({active:"settings"})} className={this.state.active == "settings" ? "active" : ""}>Settings</li>
+      <div className="page is-variable is-8 columns">
+        <div className="column is-narrow">
+          <div className="box">
+            <p className="menu-label">Administration</p>
+            <ul className="menu-list">
+              <li onClick={()=>this.setState({active:"accounts"})}>
+                <a className={this.state.active == "accounts" ? "is-active" : ""}>
+                  User Accounts
+                </a>
+              </li>
+              <li onClick={()=>this.setState({active:"roles"})}>
+                <a className={this.state.active == "roles" ? "is-active" : ""}>
+                  User roles
+                </a>
+              </li>
+            </ul>
+            <p className="menu-label">Settings</p>
+            <ul className="menu-list">
+              <li onClick={()=>this.setState({active:"settings"})}>
+                <a className={this.state.active == "settings" ? "is-active" : ""}>
+                  Settings
+                </a>
+              </li>
             </ul>
           </div>
         </div>
-        <div className="page-content">
-          <input className="input text" name="usersFilter" onChange={this.handleFilter} size='massive' icon='search' placeholder='Rechercher un compte ...' />
-          <table className="table">
+        <div className="column">
+          <div className="box">
+            <input className="input is-large" name="usersFilter" onChange={this.handleFilter} placeholder='Rechercher un compte ...'/>
+          </div>
+          <table className="table is-fullwidth is-stripped is-hoverable">
             <thead>
               <tr>
                 <td>#</td>
-                <td>_id</td>
-                <td>mail</td>
+                <td>Name</td>
+                <td>Mail</td>
+                <td>Activated</td>
+                <td></td>
               </tr>
             </thead>
             <tbody>
-              {this.state.accountsRaw.map((a,i)=>{
-                return(
-                  <>
-                    <tr>
-                      <td>{i+1}</td>
-                      <td>{a._id}</td>
-                      <td>{a.mail}</td>
-                    </tr>
-                      <tr>
-                      <td>{i+1}</td>
-                      <td>{a._id}</td>
-                      <td>{a.mail}</td>
-                    </tr>
-                      <tr>
-                      <td>{i+1}</td>
-                      <td>{a._id}</td>
-                      <td>{a.mail}</td>
-                    </tr>
-                  </>
-                )
-              })}
+              {this.state.accountsRaw.map((a,i) => <AccountRow loadAccounts={this.loadAccounts} account={a} index={i}/>)}
             </tbody>
           </table>
         </div>

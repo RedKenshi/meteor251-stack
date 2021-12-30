@@ -27,10 +27,9 @@ type Query{
 }
 
 type Mutation{
-    setAdmin(admin:String!,_id:String!): [QueryResultMessage]
-    unsetAdmin(admin:String!,_id:String!,societe:String!): [QueryResultMessage]
-    setOwner(owner:String!,_id:String!): [QueryResultMessage]
-    toggleActive(admin:String!,_id:String!): [QueryResultMessage]
-    deleteAccount(admin:String!,_id:String!): [QueryResultMessage]
-    setUserAvatar(_id:String!,avatar:String!): [QueryResultMessage]
+    setAdmin(admin:Boolean!,_id:String!): [QueryResultMessage]
+    setOwner(owner:Boolean!,_id:String!): [QueryResultMessage]
+    activateAccount(activate:Boolean!,_id:String!): [QueryResultMessage]
+    deleteAccount(_id:String!): [QueryResultMessage]
+    setAvatar(_id:String!,avatar:String!,collection:String!): [QueryResultMessage]
 }

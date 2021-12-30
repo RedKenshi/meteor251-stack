@@ -1,14 +1,30 @@
-/*COLORS FROM FLAT UI COLOR PALETTE 1*/
-/*COLORS FROM SEMANTIC UI REACT BUTTONS*/
-/*3 COLORS THEME*/
-/*SELECTED COLORS*/
+.landing-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  width: 100vw;
+  height: 100vh;
+}
+.landing-container .form-container {
+  background-color: rgba(68, 68, 136, 0.1);
+  place-self: stretch;
+  display: grid;
+}
+.landing-container .form-container .form {
+  place-self: center;
+  display: grid;
+  gap: 16px;
+}
+.landing-container img {
+  place-self: center;
+}
+
 .main-container-navbar {
   display: block;
 }
 
 .main-content-navbar {
   margin-left: 5rem;
-  padding: 32px;
+  padding: 48px 32px 48px 64px;
 }
 
 .page {
@@ -40,6 +56,101 @@ body {
   background-color: #FCFCFC;
 }
 
+.button {
+  margin: 0 4px;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+.modal-content, .modal-card {
+  width: 70%;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.evenshadow {
+  box-shadow: 0 0 1em 0.125em rgba(16, 16, 16, 0.15);
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.centered {
+  justify-content: center;
+  align-items: center;
+}
+
+.pointable {
+  cursor: pointer;
+}
+
+.margined {
+  margin: auto;
+}
+
+.margined4 {
+  margin: 4px;
+}
+
+.margined8 {
+  margin: 8px;
+}
+
+.margined8 {
+  margin: 16px;
+}
+
+.spaced-from-top8 {
+  margin-top: 8px;
+}
+
+.spaced-from-bottom8 {
+  margin-bottom: 8px;
+}
+
+.spaced-from-left8 {
+  margin-left: 8px;
+}
+
+.spaced-from-right8 {
+  margin-right: 8px;
+}
+
+.spaced-from-top16 {
+  margin-top: 16px;
+}
+
+.spaced-from-bottom16 {
+  margin-bottom: 16px;
+}
+
+.spaced-from-left16 {
+  margin-left: 16px;
+}
+
+.spaced-from-right16 {
+  margin-right: 16px;
+}
+
+.sticky {
+  position: sticky;
+  top: 16px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/*COLORS FROM FLAT UI COLOR PALETTE 1*/
+/*COLORS FROM SEMANTIC UI REACT BUTTONS*/
+/*3 COLORS THEME*/
+/*SELECTED COLORS*/
 .navbar {
   height: 100%;
   z-index: 1000;

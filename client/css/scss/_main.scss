@@ -1,8 +1,55 @@
 @import 'variables';
-
+//OVERIDES
 body{
     color:$theme-text;
     margin:0;
     font-family: 'Montserrat', sans-serif !important;
     background-color: $theme-bg;
+}
+.button{
+    margin: 0 4px
+}
+.table td{
+    vertical-align: middle;
+}
+.modal-content, .modal-card{
+    width: 70%;
+}
+
+//UTILS
+.inline{
+    display: inline-block;
+}
+.evenshadow{
+    box-shadow: 0 0 1em 0.125em rgba(#101010,.15);
+}
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+.centered{
+    justify-content: center;
+    align-items: center;
+}
+.pointable{
+    cursor: pointer;
+}
+.margined{margin:auto;}
+.margined4{margin:4px;}
+.margined8{margin:8px;}
+.margined8{margin:16px;}
+.spaced-from-top8{margin-top:8px;}
+.spaced-from-bottom8{margin-bottom:8px;}
+.spaced-from-left8{margin-left:8px;}
+.spaced-from-right8{margin-right:8px;}
+.spaced-from-top16{margin-top:16px;}
+.spaced-from-bottom16{margin-bottom:16px;}
+.spaced-from-left16{margin-left:16px;}
+.spaced-from-right16{margin-right:16px;}
+.sticky{
+    position: sticky;
+    top: 16px;
+}
+.hidden{
+    display: none !important;
 }

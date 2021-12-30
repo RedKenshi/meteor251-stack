@@ -7,11 +7,11 @@ sass.compiler = require('node-sass');
 var sass = require('gulp-sass')(require('sass'));
 
 gulp.task('sass', function () {
-   gulp.src('./client/css/scss/elements/*.scss')
-   .pipe(concat('elements.scss'))
+   gulp.src('./client/css/bulma.scss')
+   .pipe(concat('bulma.scss'))
    .pipe(sass().on('error', sass.logError))
    .pipe(gulp.dest('./client/css/'));
-
+   
    return gulp.src('./client/css/scss/*.scss')
    .pipe(concat('custom.scss'))
    .pipe(sass().on('error', sass.logError))
