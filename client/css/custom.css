@@ -20,10 +20,12 @@
 
 .main-container-navbar {
   display: block;
+  height: 100vh;
 }
 
 .main-content-navbar {
   margin-left: 5rem;
+  height: 100%;
   padding: 48px 32px 48px 64px;
 }
 
@@ -41,8 +43,47 @@
   place-self: stretch;
 }
 
+.home-container .home-card {
+  padding-right: 32px;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 0 1.5em;
+}
+.home-container .home-card .title {
+  grid-column-end: span 2;
+  place-self: center;
+}
+.home-container .home-card .image {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 8px;
+  border-radius: 8px;
+}
+.home-container .home-card p {
+  min-width: 8em;
+  text-align: justify;
+}
+
 .page-content {
   place-self: stretch;
+}
+
+.need-activation-container {
+  display: grid;
+  height: 100%;
+  grid-template-rows: 1fr;
+  gap: 64px;
+}
+.need-activation-container > .message {
+  display: flex;
+  text-align: center;
+  place-self: center;
+}
+.need-activation-container > .message > .message-body {
+  display: flex;
+  padding: 32px;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
 }
 
 /*COLORS FROM FLAT UI COLOR PALETTE 1*/
@@ -50,10 +91,20 @@
 /*3 COLORS THEME*/
 /*SELECTED COLORS*/
 body {
-  color: #2d3436;
   margin: 0;
   font-family: "Montserrat", sans-serif !important;
-  background-color: #FCFCFC;
+  background-image: linear-gradient(315deg, #bdd4e7 0%, #8693ab 74%);
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+.text-light > p, h1, h2, h3, h4, h5, h6, .title, .box {
+  color: #ededed !important;
 }
 
 .button {
@@ -66,6 +117,21 @@ body {
 
 .modal-content, .modal-card {
   width: 70%;
+}
+
+.meteor-title {
+  background: linear-gradient(315deg, #f9d29d 0%, #ffd8cb 74%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-size: 3em;
+  margin: 16px;
+  color: transparent;
+}
+
+.glass {
+  background-color: transparent;
+  backdrop-filter: blur(10px) brightness(90%);
 }
 
 .inline {
@@ -102,8 +168,24 @@ body {
   margin: 8px;
 }
 
-.margined8 {
+.margined16 {
   margin: 16px;
+}
+
+.margined32 {
+  margin: 32px;
+}
+
+.margined64 {
+  margin: 64px;
+}
+
+.margined128 {
+  margin: 128px;
+}
+
+.margined256 {
+  margin: 256px;
 }
 
 .spaced-from-top8 {
@@ -147,6 +229,14 @@ body {
   display: none !important;
 }
 
+.fullwidth {
+  width: 100%;
+}
+
+.flexwrap {
+  flex-wrap: wrap;
+}
+
 /*COLORS FROM FLAT UI COLOR PALETTE 1*/
 /*COLORS FROM SEMANTIC UI REACT BUTTONS*/
 /*3 COLORS THEME*/
@@ -156,10 +246,11 @@ body {
   z-index: 1000;
   position: fixed;
   display: inline-block;
-  background-color: #FCFCFC;
+  background-color: transparent;
+  backdrop-filter: blur(10px);
   box-shadow: 1px 0 5px black;
   width: 5rem;
-  transition: width 200ms ease;
+  transition: width 500ms ease;
 }
 .navbar hr {
   text-align: center;
@@ -167,13 +258,20 @@ body {
   margin: 1rem auto;
 }
 .navbar:hover {
+  transition: backdrop-filter 500ms ease;
+  transition: width 500ms ease;
+  backdrop-filter: blur(10px) brightness(60%);
   width: 16rem;
 }
 .navbar:hover .link-text {
   display: block !important;
 }
 .navbar:hover .nav-link-logo .svg {
-  transform: rotate(-180deg);
+  opacity: 0;
+}
+.navbar .logo .nav-link-logo .link-text {
+  color: white;
+  letter-spacing: 0.2ch;
 }
 .navbar .logo .nav-link-logo .svg {
   height: 2em;
@@ -206,10 +304,10 @@ body {
 }
 .navbar .navbar-nav .logo .nav-link .svg {
   text-align: center;
-  transition: transform 400ms;
+  transition: transform 500ms;
   margin: 0.5rem 0;
   width: 5rem;
-  color: #2d3436;
+  color: white;
 }
 .navbar .navbar-nav .logo .nav-link .svg .fa-primary {
   fill: #2185d0;
@@ -222,7 +320,7 @@ body {
   cursor: pointer;
 }
 .navbar .navbar-nav .nav-item .nav-link {
-  filter: grayscale(100%) opacity(0.7);
+  filter: grayscale(100%) opacity(0.8);
   text-decoration: none;
   display: grid;
   grid-template-columns: 5rem;
@@ -234,7 +332,7 @@ body {
   display: none;
   grid-column-start: 2;
   margin-left: 0 1.5rem;
-  color: #2d3436;
+  color: white;
 }
 .navbar .navbar-nav .nav-item .nav-link .fafree {
   width: 5rem !important;
@@ -244,10 +342,13 @@ body {
   font-size: 1.8em;
 }
 .navbar .navbar-nav .nav-item .nav-link:hover {
-  filter: grayscale(0%) brightness(1.1) opacity(0.9);
-  transition: filter 500ms ease;
+  filter: grayscale(0%) brightness(1.2) opacity(1);
+  transition: filter 200ms ease;
   transition: background-color 200ms ease;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.navbar .navbar-nav .nav-item .nav-link:not(:hover) .fafree {
+  color: white;
 }
 .navbar .navbar-nav .nav-item:last-child {
   margin-top: auto;

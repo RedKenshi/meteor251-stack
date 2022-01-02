@@ -6,7 +6,7 @@ export default class Button extends Component {
         if(this.props.icon){
             if(this.props.text){
                 return (
-                    <button {...this.props.disabled} onClick={this.props.onClick} className={
+                    <button disabled={this.props.disabled} onClick={this.props.onClick} className={
                         "button" + 
                         (this.props.size ? " is-"+this.props.size : "") +
                         (this.props.color ? " is-"+this.props.color : "") +
@@ -21,7 +21,7 @@ export default class Button extends Component {
                 )
             }else{
                 return (
-                    <button {...this.props.disabled} onClick={this.props.onClick} className={
+                    <button disabled={this.props.disabled} onClick={this.props.onClick} className={
                         "button" + 
                         (this.props.size ? " is-"+this.props.size : "") +
                         (this.props.color ? " is-"+this.props.color : "") +
@@ -36,7 +36,7 @@ export default class Button extends Component {
             }
         }else{
             return (
-                <button {...this.props.disabled} onClick={this.props.onClick} className={
+                <button disabled={this.props.disabled} onClick={this.props.onClick} className={
                     "button" + 
                     (this.props.size ? " is-"+this.props.size : "") +
                     (this.props.color ? " is-"+this.props.color : "") +

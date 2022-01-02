@@ -92,6 +92,17 @@ export const AccountRow = props => {
             setModalState(true)
         })
     }
+    const deleteAcc = () => {
+        props.client.mutate({
+            mutation:deleteAccountQuery,
+            variables:{
+                _id:props.account._id
+            }
+        }).then((data)=>{
+            props.loadAccounts();
+            setModalState(false)
+        })
+    }
 
     //CONTENT GETTER
     const getAvatarCollection = () => {
@@ -110,9 +121,12 @@ export const AccountRow = props => {
         );
     }
     const getAccountActions = () => {
+        console.log("owner:"+props.account.isOwner)
+        console.log("admin:"+props.account.isAdmin)
+        console.log("===")
         return (
             <Fragment>
-                <Button color="danger" size="small" onClick={()=>setModalState("delete")} icon="fas fa-trash" text="Delete account"/>
+                <Button disabled={props.isOwner || props.isAdmin} color="danger" size="small" onClick={()=>setModalState("delete")} icon="fas fa-trash" text="Delete account"/>
             </Fragment>
         )
     }
@@ -182,6 +196,13 @@ export const AccountRow = props => {
                     </div>
                 )
             }
+            case "delete":{
+                return(
+                    <div className="is-info">
+                        Delete {props.account.firstname} {props.account.lastname}'s account ?
+                    </div>
+                )
+            }
             default:{
                 return(
                     <Fragment>
@@ -189,7 +210,7 @@ export const AccountRow = props => {
                             <div className="card-content">
                                 <div className="media">
                                     <div className="media-left">
-                                        <figure onClick={()=>setModalState("avatar")} className="image pointable is-64x64">
+                                        <figure onClick={()=>setModalState("avatar")} className="image pointable is-128x128">
                                             <img src={"/avatar/"+props.account.avatar+".svg"} alt="Placeholder image"/>
                                         </figure>
                                     </div>
@@ -200,22 +221,40 @@ export const AccountRow = props => {
                                 </div>
                                 <div className="content">
                                     <p> Activated : 
-                                        <div className="tags spaced-from-left8 inline has-addons">
-                                            <span onClick={()=>setModalState("deactivate")} className={"tag pointable" + (props.account.activated ? " is-dark" : " is-danger")}>Deactivated</span>
-                                            <span onClick={()=>setModalState("activate")} className={"tag pointable" + (props.account.activated ? " is-success" : " is-dark")}>Activated</span>
-                                        </div>
+                                        {(!props.account.isOwner  ? 
+                                            <div className="tags spaced-from-left8 inline has-addons">
+                                                <span onClick={()=>setModalState("deactivate")} className={"tag pointable" + (props.account.activated ? " is-dark" : " is-danger")}>Deactivated</span>
+                                                <span onClick={()=>setModalState("activate")} className={"tag pointable" + (props.account.activated ? " is-success" : " is-dark")}>Activated</span>
+                                            </div>
+                                            :
+                                            <div className="tags spaced-from-left8 inline has-addons">
+                                                <span className={"tag pointable" + (props.account.activated ? " is-success" : " is-danger")}>{(props.account.activated ? "Yes" : "No")}</span>
+                                            </div>
+                                        )}
                                     </p>
                                     <p> Admin : 
-                                        <div className="tags spaced-from-left8 inline has-addons">
-                                            <span onClick={()=>setModalState("unadmin")} className={"tag pointable" + (props.account.isAdmin ? " is-dark" : " is-danger")}>Non</span>
-                                            <span onClick={()=>setModalState("admin")} className={"tag pointable" + (props.account.isAdmin ? " is-success" : " is-dark")}>Admin</span>
-                                        </div>
+                                        {(!props.account.isOwner  ? 
+                                            <div className="tags spaced-from-left8 inline has-addons">
+                                                <span onClick={()=>setModalState("unadmin")} className={"tag pointable" + (props.account.isAdmin ? " is-dark" : " is-danger")}>Non</span>
+                                                <span onClick={()=>setModalState("admin")} className={"tag pointable" + (props.account.isAdmin ? " is-success" : " is-dark")}>Admin</span>
+                                            </div>
+                                            :
+                                            <div className="tags spaced-from-left8 inline has-addons">
+                                                <span className={"tag pointable" + (props.account.isAdmin ? " is-success" : " is-danger")}>{(props.account.isAdmin ? "Yes" : "No")}</span>
+                                            </div>
+                                        )}
                                     </p>
                                     <p> Owner : 
-                                        <div className="tags spaced-from-left8 inline has-addons">
-                                            <span onClick={()=>setModalState("unowner")} className={"tag pointable" + (props.account.isOwner ? " is-dark" : " is-danger")}>Non</span>
-                                            <span onClick={()=>setModalState("owner")} className={"tag pointable" + (props.account.isOwner ? " is-success" : " is-dark")}>Owner</span>
-                                        </div>
+                                        {(props.isOwner ? 
+                                            <div className="tags spaced-from-left8 inline has-addons">
+                                                <span onClick={()=>setModalState("unowner")} className={"tag pointable" + (props.account.isOwner ? " is-dark" : " is-danger")}>Non</span>
+                                                <span onClick={()=>setModalState("owner")} className={"tag pointable" + (props.account.isOwner ? " is-success" : " is-dark")}>Owner</span>
+                                            </div>
+                                            :
+                                            <div className="tags spaced-from-left8 inline has-addons">
+                                                <span className={"tag pointable" + (props.account.isOwner ? " is-success" : " is-danger")}>{(props.account.isOwner ? "Yes" : "No")}</span>
+                                            </div>
+                                        )}
                                     </p>
                                 </div>
                             </div>
@@ -282,6 +321,14 @@ export const AccountRow = props => {
                     <Fragment>
                         <Button color="danger" icon="fas fa-arrow-left" text="Go back" onClick={()=>setModalState(true)}/>
                         <Button color="warning" icon="fas fa-times" text="Remove ownership" onClick={()=>setOwner(false)}/>
+                    </Fragment>
+                )
+            }
+            case "delete":{
+                return(
+                    <Fragment>
+                        <Button color="danger" icon="fas fa-arrow-left" text="Go back" onClick={()=>setModalState(true)}/>
+                        <Button color="danger" icon="fas fa-trash" text="Delete" onClick={()=>deleteAcc()}/>
                     </Fragment>
                 )
             }

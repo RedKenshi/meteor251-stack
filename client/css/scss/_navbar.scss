@@ -5,26 +5,37 @@
   z-index: 1000;
   position: fixed;
   display: inline-block;
-  background-color: $theme-bg;
+  //background-color: $theme-bg;
+  background-color: transparent;
+  backdrop-filter: blur(10px);
   box-shadow: 1px 0 5px black;
   width: 5rem;
-  transition: width 200ms ease;
+  transition: width 500ms ease;
   & hr{
     text-align: center;
     width: 70%;
     margin: 1rem auto;
   }
   &:hover{
+    transition: backdrop-filter 500ms ease;
+    transition: width 500ms ease;
+    backdrop-filter: blur(10px) brightness(60%);
     width: 16rem;
     & .link-text{
       display: block !important;
     }
     & .nav-link-logo .svg{
-      transform: rotate(-180deg);
+      opacity: 0;
     }
   }
-  & .logo .nav-link-logo .svg{    
-    height: 2em;
+  & .logo .nav-link-logo {
+    & .link-text{
+      color:$white;
+      letter-spacing: .2ch;
+    }
+    & .svg{
+      height: 2em;
+    }
   }
   & .navbar-nav {
     padding: 0;
@@ -51,10 +62,11 @@
         }
         & .svg{
           text-align: center;
-          transition: transform 400ms;
+          transition: transform 500ms;
           margin: .5rem 0;
           width: 5rem;
-          color:$theme-text;
+          //color:$theme-text;
+          color: $white;
           & .fa-primary{
             fill:$blue;
           }
@@ -68,7 +80,7 @@
       list-style: none;
       cursor: pointer;
       & .nav-link{
-        filter: grayscale(100%) opacity(.7);
+        filter: grayscale(100%) opacity(.8);
         text-decoration: none;
         display: grid;
         grid-template-columns: 5rem;
@@ -79,7 +91,8 @@
           display: none;
           grid-column-start: 2;
           margin-left: 0 1.5rem;
-          color:$theme-text;
+          //color:$theme-text;
+          color: $white;
         }
         & .fafree{
           width: 5rem !important;
@@ -89,10 +102,13 @@
           font-size: 1.8em;
         }
         &:hover{
-          filter: grayscale(0%) brightness(1.1) opacity(.9);
-          transition: filter 500ms ease;
+          filter: grayscale(0%) brightness(1.2) opacity(1);
+          transition: filter 200ms ease;
           transition: background-color 200ms ease;
-          background-color: rgba(#000,.1);
+          background-color: rgba(#fff,.2);
+        }
+        &:not(:hover) .fafree{
+          color: $white;
         }
       }
     }

@@ -15,6 +15,7 @@ export default {
             let userFull = {};
             if(user != undefined){
                 userFull = Meteor.users.findOne({_id:user._id})
+                formatUser(userFull)
             }
             return userFull || {}
         },
@@ -84,8 +85,8 @@ export default {
         },
         async deleteAccount(obj,{_id},{user}){
             if(user._id){
-                const user = Meteor.users.findOne({_id:user._id});
-                if(user.settings.isAdmin){
+                const admin = Meteor.users.findOne({_id:user._id});
+                if(admin.settings.isAdmin){
                     Meteor.users.remove(_id);
                     return [{status:true,message:'Account deleted'}];
                 }

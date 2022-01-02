@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import AppBody from './AppBody';
-import { BrowserRouter } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const App = () => (
-  <AppBody/>
+  <Fragment>
+    <ToastContainer position="bottom-right" position="bottom-right" autoClose={5000} hideProgressBar={false} newestOnTop rtl/>
+    <AppBody/>
+  </Fragment>
 );

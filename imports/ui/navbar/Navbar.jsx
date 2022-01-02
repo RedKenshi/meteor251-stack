@@ -100,7 +100,7 @@ export const Navbar = props => {
             </a>
           </li>
           {getNavbarItems()}
-          {getAdminNavbarItems()}
+          {(props.isAdmin ? getAdminNavbarItems() : "")}
           <li className="nav-item" name={"logout"}>
             <a href="#" className="nav-link" key={"logout"} onClick={()=>logout()}>
               <FAFree code="fas fa-power-off" color="red"/>

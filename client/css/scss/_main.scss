@@ -1,10 +1,19 @@
 @import 'variables';
 //OVERIDES
 body{
-    color:$theme-text;
     margin:0;
     font-family: 'Montserrat', sans-serif !important;
-    background-color: $theme-bg;
+    //background-color: $theme-bg;
+    //background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%); // BLEU TO VIOLET DISNEY
+    //background-image: linear-gradient(315deg, #ebbe9b 0%, #e7a977 74%); // ORANGE TO JAUNE ROI LION
+    background-image: linear-gradient(315deg, #bdd4e7 0%, #8693ab 74%); // BLEU GREY DARK TO LIGHT
+    //background-image: linear-gradient(315deg, #f9d29d 0%, #ffd8cb 74%); // PEACH TO YELLOW CHILL
+    min-height: 100vh;
+    min-width: 100vw;
+}
+ul,li { margin:0; padding:0; }
+.text-light > p,h1,h2,h3,h4,h5,h6,.title,.box{
+    color:$grey-lightest !important;
 }
 .button{
     margin: 0 4px
@@ -15,8 +24,24 @@ body{
 .modal-content, .modal-card{
     width: 70%;
 }
+.meteor-title-container{
+    
+}
+.meteor-title{
+    background:linear-gradient(315deg, #f9d29d 0%, #ffd8cb 74%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-size: 3em;
+    margin: 16px;
+    color:transparent;
+}
 
 //UTILS
+.glass{
+    background-color: transparent;
+    backdrop-filter: blur(10px) brightness(90%);
+}
 .inline{
     display: inline-block;
 }
@@ -37,7 +62,12 @@ body{
 .margined{margin:auto;}
 .margined4{margin:4px;}
 .margined8{margin:8px;}
-.margined8{margin:16px;}
+.margined16{margin:16px;}
+.margined32{margin:32px;}
+.margined64{margin:64px;}
+.margined128{margin:128px;}
+.margined256{margin:256px;}
+
 .spaced-from-top8{margin-top:8px;}
 .spaced-from-bottom8{margin-bottom:8px;}
 .spaced-from-left8{margin-left:8px;}
@@ -46,10 +76,17 @@ body{
 .spaced-from-bottom16{margin-bottom:16px;}
 .spaced-from-left16{margin-left:16px;}
 .spaced-from-right16{margin-right:16px;}
+
 .sticky{
     position: sticky;
     top: 16px;
 }
 .hidden{
     display: none !important;
+}
+.fullwidth{
+    width: 100%;
+}
+.flexwrap{
+    flex-wrap: wrap;
 }

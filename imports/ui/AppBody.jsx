@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Routes, Route } from "react-router-dom";
 
 import { UserContext } from '../contexts/UserContext';
@@ -6,43 +6,52 @@ import { UserContext } from '../contexts/UserContext';
 import Home from './pages/Home.jsx';
 import Navbar from './navbar/Navbar';
 import Login from './pages/Login.jsx';
+import NeedActivation from './pages/NeedActivation.jsx';
 import Accounts from './pages/Accounts.jsx';
 
 export const AppBody = props => {
-  if(Meteor.userId() != null){
-    return (
-      <Routes>
-        <Route path="/" element={withNavbar(Home)({...props})} />
+    if(Meteor.userId() != null){
+        if(props.isActivated){
+            return (
+                <Routes>
+                    <Route path="/" element={withNavbar(Home)({...props})} />
 
-        <Route exact path="/home" element={withNavbar(Home)({...props})}/>
+                    <Route exact path="/home" element={withNavbar(Home)({...props})}/>
 
-        <Route exact path="/curriculums" element={withNavbar(Home)({...props})}/>
-        
-        <Route exact path="/admin" element={withNavbar(Accounts)({...props})}/>
-        <Route exact path="/admin/accounts" element={withNavbar(Accounts)({...props})}/>
-      </Routes>
-    )
-  }else{
-    return(
-      <Routes>
-          <Route path="*" element={<Login />} />
-      </Routes>
-    )
-  }
+                    <Route exact path="/curriculums" element={withNavbar(Home)({...props})}/>
+                    
+                    {(props.isAdmin ? <Route exact path="/admin" element={withNavbar(Accounts)({...props})}/> : "")}
+                    {(props.isAdmin ? <Route exact path="/admin/accounts" element={withNavbar(Accounts)({...props})}/> : "")}
+                </Routes>
+            )
+        }else{
+            return(
+                <Routes>
+                    <Route path="*" element={withNavbar(NeedActivation)({...props})} />
+                </Routes>
+            )
+        }
+    }else{
+        return(
+            <Routes>
+                <Route path="*" element={<Login />} />
+            </Routes>
+        )
+    }
 }
 
 const withNavbar = Component => props => (
-  <div className="main-container-navbar">
-      <Navbar />
-      <div className="main-content-navbar">
-        <Component {... props}/>
-      </div>
-  </div>
+    <div className="main-container-navbar">
+        <Navbar />
+        <div className="main-content-navbar">
+            <Component {... props}/>
+        </div>
+    </div>
 )
 const withoutNavbar = Component => props => (
-  <div className="main-container-fullscreen">
+    <div className="main-container-fullscreen">
         <Component {... props}/>
-  </div>
+    </div>
 )
 
 const withUserContext = WrappedComponent => props => (

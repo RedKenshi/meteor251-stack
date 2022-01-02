@@ -11,6 +11,11 @@ gulp.task('sass', function () {
    .pipe(concat('bulma.scss'))
    .pipe(sass().on('error', sass.logError))
    .pipe(gulp.dest('./client/css/'));
+
+   gulp.src('./client/css/toast.scss')
+   .pipe(concat('toast.scss'))
+   .pipe(sass().on('error', sass.logError))
+   .pipe(gulp.dest('./client/css/'));
    
    return gulp.src('./client/css/scss/*.scss')
    .pipe(concat('custom.scss'))
