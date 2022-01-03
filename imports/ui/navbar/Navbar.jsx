@@ -21,27 +21,11 @@ export const Navbar = props => {
       color:"blue"
     },
     {
-      name:"curriculums",
-      active:"curriculums",
-      label:"Curriculums",
+      name:"yournewroute",
+      active:"yournewroute",
+      label:"Your new route",
       display:true,
-      icon:"fas fa-graduation-cap",
-      color:"blue"
-    },
-    {
-      name:"modules",
-      active:"modules",
-      label:"Modules",
-      display:true,
-      icon:"fas fa-book",
-      color:"blue"
-    },
-    {
-      name:"planning/"+new Date().getFullYear()+"/"+parseInt(new Date().getMonth()+1),
-      active:"planning",
-      label:"Planning",
-      display:true,
-      icon:"fas fa-calendar-day",
+      icon:"fas fa-plus",
       color:"blue"
     }
   ];

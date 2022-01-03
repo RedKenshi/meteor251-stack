@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Routes, Route } from "react-router-dom";
 
 import { UserContext } from '../contexts/UserContext';
@@ -7,6 +7,7 @@ import Home from './pages/Home.jsx';
 import Navbar from './navbar/Navbar';
 import Login from './pages/Login.jsx';
 import NeedActivation from './pages/NeedActivation.jsx';
+import Yournewroute from './pages/Yournewroute.jsx'
 import Accounts from './pages/Accounts.jsx';
 
 export const AppBody = props => {
@@ -15,11 +16,8 @@ export const AppBody = props => {
             return (
                 <Routes>
                     <Route path="/" element={withNavbar(Home)({...props})} />
-
                     <Route exact path="/home" element={withNavbar(Home)({...props})}/>
-
-                    <Route exact path="/curriculums" element={withNavbar(Home)({...props})}/>
-                    
+                    <Route exact path="/yournewroute" element={withNavbar(Yournewroute)({...props})}/>
                     {(props.isAdmin ? <Route exact path="/admin" element={withNavbar(Accounts)({...props})}/> : "")}
                     {(props.isAdmin ? <Route exact path="/admin/accounts" element={withNavbar(Accounts)({...props})}/> : "")}
                 </Routes>

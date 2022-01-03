@@ -1,7 +1,5 @@
-import React, { Fragment,Component } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import DuoIcon from '../elements/DuoIcon';
 
 import { FAFree } from '../elements/FAFree';
 
