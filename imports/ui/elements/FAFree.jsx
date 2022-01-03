@@ -1,11 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import { UserContext } from '../../contexts/UserContext';
 
-export class FAFree extends Component {
-
-    render() {return (
-        <i style={this.props.style} className={"fafree "+ this.props.color + " " + this.props.code}></i>
-    )}
+export const FAFree = props => {
+    return (
+        <i style={props.style} className={"fafree "+ props.color + " " + props.code}></i>
+    )
 }
 
 export default FAFree;

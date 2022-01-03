@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { gql } from 'graphql-tag';
 import { toast } from 'react-toastify';
 toast.configure();
 export const UserContext = React.createContext();
 
-export class UserProvider extends Component {
+export const UserProvider = props => {
 
-    state = {
-        user:"",
-        userQuery : gql` query user {user {
+        const [user, setUser] = useState("");
+        const [isActivated, setIsActivated] = useState(false);
+        const [isAdmin, setIsAdmin] = useState(false);
+        const [isOwner, setIsOwner] = useState(false);
+        const userQuery = gql` query user {user {
             _id
             firstname
             lastname
@@ -17,10 +19,9 @@ export class UserProvider extends Component {
             isAdmin
             avatar
             activated
-          }}`
-    }
+        }}`
 
-    toast = ({message,type}) => {
+    const toast = ({message,type}) => {
         if(type == 'error'){
             toast(message,{type:toast.TYPE.ERROR,toast});
         }
@@ -34,54 +35,45 @@ export class UserProvider extends Component {
             toast(message,{type:toast.TYPE.WARNING});
         }
     }
-    logout = () => {
+    const logout = () => {
         Meteor.logout(()=>{
-            this.setState({
-                user:""
-            })
-            this.props.client.cache.reset();
-            this.props.client.resetStore();
+            setUser("")
+            props.client.cache.reset();
+            props.client.resetStore();
         });
     }
-    loadUser = () => {
-        this.props.client.query({
-            query:this.state.userQuery,
+    const loadUser = () => {
+        props.client.query({
+            query:userQuery,
             fetchPolicy:"network-only"
         }).then(({data})=>{
-            if(this.state.user != undefined){
-                if(this.state.user._id != data.user._id){
-                    this.setState({
-                        user:data.user,
-                        isOwner:data.user.isOwner,
-                        isAdmin:data.user.isAdmin,
-                        isActivated:data.user.activated
-                    })
+            if(user != undefined){
+                if(user._id != data.user._id){
+                    setUser(data.user)
+                    setIsOwner(data.user.isOwner)
+                    setIsAdmin(data.user.isAdmin)
+                    setIsActivated(data.user.activated)
                 }
             }
         })
     }
 
-    componentDidMount = () => {
-        this.loadUser();
-    }
-    componentDidUpdate = () => {
+    useEffect = () => {
         this.loadUser();
     }
 
-    render(){
-        return (
-            <UserContext.Provider value={{
-                user: this.state.user,
-                isOwner:this.state.isOwner,
-                isAdmin:this.state.isAdmin,
-                isActivated:this.state.isActivated,
-                loadUser:this.loadUser,
-                toast: this.toast,
-                logout: this.logout,
-                client: this.props.client
-            }}>
-                {this.props.children}
-            </UserContext.Provider>
-        );
-    }
+    return (
+        <UserContext.Provider value={{
+            user: user,
+            isOwner: isOwner,
+            isAdmin: isAdmin,
+            isActivated: isActivated,
+            loadUser: loadUser,
+            toast: toast,
+            logout: logout,
+            client: props.client
+        }}>
+            {props.children}
+        </UserContext.Provider>
+    );
 }
