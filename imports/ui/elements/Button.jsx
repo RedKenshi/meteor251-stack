@@ -3,9 +3,6 @@ import React, { Component } from 'react';
 export default class Button extends Component {
 
     render = () => {
-        if(this.props.text == "Delete account"){
-            console.log(this.props.text + ":" + this.props.disabled)
-        }
         if(this.props.icon){
             if(this.props.text){
                 return (

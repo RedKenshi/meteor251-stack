@@ -50,7 +50,6 @@ export class UserProvider extends Component {
         }).then(({data})=>{
             if(this.state.user != undefined){
                 if(this.state.user._id != data.user._id){
-                    console.log("updated")
                     this.setState({
                         user:data.user,
                         isOwner:data.user.isOwner,

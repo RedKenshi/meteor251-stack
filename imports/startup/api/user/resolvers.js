@@ -24,7 +24,7 @@ export default {
             return users
         },
         async accounts(obj, args, {user}){
-            let users = Meteor.users.find({}).fetch() || {};
+            let users = Meteor.users.find().fetch();
             users.forEach(user=> {
                 formatUser(user)
             });

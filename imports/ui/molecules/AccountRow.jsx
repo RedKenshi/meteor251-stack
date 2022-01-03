@@ -121,15 +121,11 @@ export const AccountRow = props => {
         );
     }
     const getAccountActions = () => {
-        if(props.isOwner || props.isAdmin){
-            return (
-                <Fragment>
-                    <Button disabled={props.account.isOwner || props.account.isAdmin} color="danger" size="small" onClick={()=>setModalState("delete")} icon="fas fa-trash" text="Delete account"/>
-                </Fragment>
-            )
-        }else{
-            return ("Aucune actions disponible")
-        }
+        return (
+            <Fragment>
+                <Button disabled={props.account.isOwner || props.account.isAdmin} color="danger" size="small" onClick={()=>setModalState("delete")} icon="fas fa-trash" text="Delete account"/>
+            </Fragment>
+        )
     }
     const getModalContent = () => {
         switch(modalState){
