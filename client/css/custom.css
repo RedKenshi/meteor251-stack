@@ -103,7 +103,15 @@ ul, li {
   padding: 0;
 }
 
-.text-light > p, h1, h2, h3, h4, h5, h6, .title, .box {
+.text-light p,
+.text-light h1,
+.text-light h2,
+.text-light h3,
+.text-light h4,
+.text-light h5,
+.text-light h6,
+.text-light .title,
+.text-light .box {
   color: #ededed !important;
 }
 
@@ -218,6 +226,23 @@ ul, li {
 
 .spaced-from-right16 {
   margin-right: 16px;
+}
+
+.data-display {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+.data-display:nth-child(1n) {
+  place-self: center end;
+}
+.data-display:nth-child(2n) {
+  place-self: center start;
+}
+.data-display > p {
+  margin-bottom: 0 !important;
+}
+.data-display > .tag, .data-display .tags {
+  margin-bottom: 0 !important;
 }
 
 .sticky {

@@ -74,11 +74,13 @@ export class Accounts extends Component {
                 <td>Name</td>
                 <td>Mail</td>
                 <td>Activated</td>
+                <td>isAdmin</td>
+                <td>isOwner</td>
                 <td></td>
               </tr>
             </thead>
             <tbody>
-              {this.state.accountsRaw.map((a,i) => <AccountRow loadAccounts={this.loadAccounts} account={a} index={i}/>)}
+              {this.state.accountsRaw.map((a,i) => <AccountRow key={a._id} loadAccounts={this.loadAccounts} account={a} index={i}/>)}
             </tbody>
           </table>
         </div>

@@ -28,7 +28,7 @@ const AppBody = props => {
                 if(!error){
                     props.loadUser();
                 }else{
-                    props.toast({message:"login failed",type:"error"})
+                    props.toast({message:error.reason,type:"error"})
                 }
             }
         );
@@ -55,7 +55,7 @@ const AppBody = props => {
                         if(!error){
                             props.loadUser();
                         }else{
-                            props.toast("login failed","error")
+                            props.toast({message:error.reason,type:"error"})
                         }
                     }
                 );

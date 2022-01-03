@@ -12,7 +12,16 @@ body{
     min-width: 100vw;
 }
 ul,li { margin:0; padding:0; }
-.text-light > p,h1,h2,h3,h4,h5,h6,.title,.box{
+
+.text-light p,
+.text-light h1,
+.text-light h2,
+.text-light h3,
+.text-light h4,
+.text-light h5,
+.text-light h6,
+.text-light .title,
+.text-light .box{
     color:$grey-lightest !important;
 }
 .button{
@@ -72,10 +81,28 @@ ul,li { margin:0; padding:0; }
 .spaced-from-bottom8{margin-bottom:8px;}
 .spaced-from-left8{margin-left:8px;}
 .spaced-from-right8{margin-right:8px;}
+
 .spaced-from-top16{margin-top:16px;}
 .spaced-from-bottom16{margin-bottom:16px;}
 .spaced-from-left16{margin-left:16px;}
 .spaced-from-right16{margin-right:16px;}
+
+.data-display{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    &:nth-child(1n){
+        place-self: center end;
+    }
+    &:nth-child(2n){
+        place-self: center start;
+    }
+    & > p{
+        margin-bottom: 0 !important;
+    }
+    & > .tag,.tags{
+        margin-bottom: 0 !important;
+    }
+}
 
 .sticky{
     position: sticky;

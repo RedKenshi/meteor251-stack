@@ -121,14 +121,15 @@ export const AccountRow = props => {
         );
     }
     const getAccountActions = () => {
-        console.log("owner:"+props.account.isOwner)
-        console.log("admin:"+props.account.isAdmin)
-        console.log("===")
-        return (
-            <Fragment>
-                <Button disabled={props.isOwner || props.isAdmin} color="danger" size="small" onClick={()=>setModalState("delete")} icon="fas fa-trash" text="Delete account"/>
-            </Fragment>
-        )
+        if(props.isOwner || props.isAdmin){
+            return (
+                <Fragment>
+                    <Button disabled={props.account.isOwner || props.account.isAdmin} color="danger" size="small" onClick={()=>setModalState("delete")} icon="fas fa-trash" text="Delete account"/>
+                </Fragment>
+            )
+        }else{
+            return ("Aucune actions disponible")
+        }
     }
     const getModalContent = () => {
         switch(modalState){
@@ -219,43 +220,40 @@ export const AccountRow = props => {
                                         <p className="subtitle is-6">{props.account.mail}</p>
                                     </div>
                                 </div>
-                                <div className="content">
-                                    <p> Activated : 
-                                        {(!props.account.isOwner  ? 
-                                            <div className="tags spaced-from-left8 inline has-addons">
-                                                <span onClick={()=>setModalState("deactivate")} className={"tag pointable" + (props.account.activated ? " is-dark" : " is-danger")}>Deactivated</span>
-                                                <span onClick={()=>setModalState("activate")} className={"tag pointable" + (props.account.activated ? " is-success" : " is-dark")}>Activated</span>
-                                            </div>
-                                            :
-                                            <div className="tags spaced-from-left8 inline has-addons">
-                                                <span className={"tag pointable" + (props.account.activated ? " is-success" : " is-danger")}>{(props.account.activated ? "Yes" : "No")}</span>
-                                            </div>
-                                        )}
-                                    </p>
-                                    <p> Admin : 
-                                        {(!props.account.isOwner  ? 
-                                            <div className="tags spaced-from-left8 inline has-addons">
-                                                <span onClick={()=>setModalState("unadmin")} className={"tag pointable" + (props.account.isAdmin ? " is-dark" : " is-danger")}>Non</span>
-                                                <span onClick={()=>setModalState("admin")} className={"tag pointable" + (props.account.isAdmin ? " is-success" : " is-dark")}>Admin</span>
-                                            </div>
-                                            :
-                                            <div className="tags spaced-from-left8 inline has-addons">
-                                                <span className={"tag pointable" + (props.account.isAdmin ? " is-success" : " is-danger")}>{(props.account.isAdmin ? "Yes" : "No")}</span>
-                                            </div>
-                                        )}
-                                    </p>
-                                    <p> Owner : 
-                                        {(props.isOwner ? 
-                                            <div className="tags spaced-from-left8 inline has-addons">
-                                                <span onClick={()=>setModalState("unowner")} className={"tag pointable" + (props.account.isOwner ? " is-dark" : " is-danger")}>Non</span>
-                                                <span onClick={()=>setModalState("owner")} className={"tag pointable" + (props.account.isOwner ? " is-success" : " is-dark")}>Owner</span>
-                                            </div>
-                                            :
-                                            <div className="tags spaced-from-left8 inline has-addons">
-                                                <span className={"tag pointable" + (props.account.isOwner ? " is-success" : " is-danger")}>{(props.account.isOwner ? "Yes" : "No")}</span>
-                                            </div>
-                                        )}
-                                    </p>
+                                <div className="content data-display">
+                                    <p> Activated : </p>
+                                    {(!props.account.isOwner  ? 
+                                        <div className="tags spaced-from-left8 inline has-addons">
+                                            <span onClick={()=>setModalState("deactivate")} className={"tag pointable" + (props.account.activated ? " is-dark" : " is-danger")}>Deactivated</span>
+                                            <span onClick={()=>setModalState("activate")} className={"tag pointable" + (props.account.activated ? " is-success" : " is-dark")}>Activated</span>
+                                        </div>
+                                        :
+                                        <div className="tags spaced-from-left8 inline has-addons">
+                                            <span className={"tag pointable" + (props.account.activated ? " is-success" : " is-danger")}>{(props.account.activated ? "Yes" : "No")}</span>
+                                        </div>
+                                    )}
+                                    <p> Admin : </p>
+                                    {(!props.account.isOwner  ? 
+                                        <div className="tags spaced-from-left8 inline has-addons">
+                                            <span onClick={()=>setModalState("unadmin")} className={"tag pointable" + (props.account.isAdmin ? " is-dark" : " is-danger")}>Non</span>
+                                            <span onClick={()=>setModalState("admin")} className={"tag pointable" + (props.account.isAdmin ? " is-success" : " is-dark")}>Admin</span>
+                                        </div>
+                                        :
+                                        <div className="tags spaced-from-left8 inline has-addons">
+                                            <span className={"tag pointable" + (props.account.isAdmin ? " is-success" : " is-danger")}>{(props.account.isAdmin ? "Yes" : "No")}</span>
+                                        </div>
+                                    )}
+                                    <p> Owner : </p>
+                                    {(props.isOwner ? 
+                                        <div className="tags spaced-from-left8 inline has-addons">
+                                            <span onClick={()=>setModalState("unowner")} className={"tag pointable" + (props.account.isOwner ? " is-dark" : " is-danger")}>Non</span>
+                                            <span onClick={()=>setModalState("owner")} className={"tag pointable" + (props.account.isOwner ? " is-success" : " is-dark")}>Owner</span>
+                                        </div>
+                                        :
+                                        <div className="tags spaced-from-left8 inline has-addons">
+                                            <span className={"tag pointable" + (props.account.isOwner ? " is-success" : " is-danger")}>{(props.account.isOwner ? "Yes" : "No")}</span>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -344,30 +342,32 @@ export const AccountRow = props => {
 
     return (
         <Fragment>
-            <tr>
+            <tr key={props.key}>
                 <td>{props.index+1}</td>
                 <td>{props.account.firstname + " " + props.account.lastname}</td>
                 <td>{props.account.mail}</td>
                 <td>{(props.account.activated ? <span className="tag is-success">Oui</span> : <span className="tag is-danger">Non</span>)}</td>
+                <td>{(props.account.isAdmin ? <span className="tag is-success">Oui</span> : <span className="tag is-dark">Non</span>)}</td>
+                <td>{(props.account.isOwner ? <span className="tag is-info">Oui</span> : <span className="tag is-dark">Non</span>)}</td>
                 <td className="is-narrow">
                     <Button color="info" size="small" light onClick={()=>setModalState("user")} icon="far fa-user"/>
+                    <div className={"modal" + (modalState != false ? " is-active" : "")}>
+                    <div className="modal-background"></div>
+                        <div className="modal-card">
+                            <header className="modal-card-head">
+                                <p className="modal-card-title">User ID Card</p>
+                                <button className="delete" aria-label="close" onClick={()=>setModalState(false)}></button>
+                            </header>
+                            <section className="modal-card-body">
+                                {getModalContent()}
+                            </section>
+                            <footer className="modal-card-foot">
+                                {getModalFooter()}
+                            </footer>
+                        </div>
+                    </div>
                 </td>
             </tr>
-            <div className={"modal" + (modalState != false ? " is-active" : "")}>
-                <div className="modal-background"></div>
-                <div className="modal-card">
-                    <header className="modal-card-head">
-                        <p className="modal-card-title">User ID Card</p>
-                        <button className="delete" aria-label="close" onClick={()=>setModalState(false)}></button>
-                    </header>
-                    <section className="modal-card-body">
-                        {getModalContent()}
-                    </section>
-                    <footer className="modal-card-foot">
-                        {getModalFooter()}
-                    </footer>
-                </div>
-            </div>
         </Fragment>
     )
 }
