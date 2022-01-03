@@ -1,39 +1,45 @@
 import React, { useEffect, useState } from 'react';
 import { gql } from 'graphql-tag';
-import { toast } from 'react-toastify';
-toast.configure();
+import { toast as TOASTER } from 'react-toastify';
+TOASTER.configure();
+
 export const UserContext = React.createContext();
 
 export const UserProvider = props => {
-
-        const [user, setUser] = useState("");
-        const [isActivated, setIsActivated] = useState(false);
-        const [isAdmin, setIsAdmin] = useState(false);
-        const [isOwner, setIsOwner] = useState(false);
-        const userQuery = gql` query user {user {
-            _id
-            firstname
-            lastname
-            mail
-            isOwner
-            isAdmin
-            avatar
-            activated
-        }}`
+    const [user, setUser] = useState("loading");
+    const [isActivated, setIsActivated] = useState("loading");
+    const [isAdmin, setIsAdmin] = useState("loading");
+    const [isOwner, setIsOwner] = useState("loading");
+    const userQuery = gql` query user {user {
+        _id
+        firstname
+        lastname
+        mail
+        isOwner
+        isAdmin
+        avatar
+        activated
+    }}`
 
     const toast = ({message,type}) => {
+        console.log(message,type)
         if(type == 'error'){
-            toast(message,{type:toast.TYPE.ERROR,toast});
+            TOASTER(message,{type:TOASTER.TYPE.ERROR});
         }
         if(type == 'success'){
-            toast(message,{type:toast.TYPE.SUCCESS});
+            TOASTER(message,{type:TOASTER.TYPE.SUCCESS});
         }
         if(type == 'info'){
-            toast(message,{type:toast.TYPE.INFO});
+            TOASTER(message,{type:TOASTER.TYPE.INFO});
         }
         if(type == 'warning'){
-            toast(message,{type:toast.TYPE.WARNING});
+            TOASTER(message,{type:TOASTER.TYPE.WARNING});
         }
+    }
+    const toastQRM = data => {
+        data.map(d=>{
+            toast({message:d.message,type:d.status})
+        })
     }
     const logout = () => {
         Meteor.logout(()=>{
@@ -58,9 +64,9 @@ export const UserProvider = props => {
         })
     }
 
-    useEffect = () => {
-        this.loadUser();
-    }
+    useEffect (()=>{
+        loadUser();
+    });
 
     return (
         <UserContext.Provider value={{
@@ -70,6 +76,7 @@ export const UserProvider = props => {
             isActivated: isActivated,
             loadUser: loadUser,
             toast: toast,
+            toastQRM: toastQRM,
             logout: logout,
             client: props.client
         }}>

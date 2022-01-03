@@ -10,7 +10,7 @@ import merge from 'lodash/merge';
 import UserSchema from '../api/user/User.graphql';
 import UserResolvers from '../api/user/resolvers.js';
 
-// #0595
+// #0597
 
 const typeDefs = [
     UserSchema

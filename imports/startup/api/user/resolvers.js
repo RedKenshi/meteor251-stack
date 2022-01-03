@@ -43,9 +43,9 @@ export default {
                             "settings.isAdmin": admin,
                         }
                     });
-                    return [{status:true,message:'Admin power given successfully'}];
+                    return [{status:"success",message:'Admin power given successfully'}];
                 }
-                return [{status:true,message:'Error while giving ownership'}];
+                return [{status:"success",message:'Error while giving ownership'}];
             }
             throw new Error('Unauthorized')
         },
@@ -60,9 +60,9 @@ export default {
                             "settings.isOwner": owner,
                         }
                     });
-                    return [{status:true,message:'Ownership given successfully'}];
+                    return [{status:"success",message:'Ownership given successfully'}];
                 }
-                return [{status:true,message:'Error while giving ownership'}];
+                return [{status:"success",message:'Error while giving ownership'}];
             }
             throw new Error('Unauthorized')
         },
@@ -77,9 +77,9 @@ export default {
                             "settings.activated": activate,
                         }
                     });
-                    return [{status:true,message:'Activation successful'}];
+                    return [{status:"success",message:'Activation successful'}];
                 }
-                return [{status:true,message:'Error while activation'}];
+                return [{status:"success",message:'Error while activation'}];
             }
             throw new Error('Unauthorized')
         },
@@ -88,9 +88,9 @@ export default {
                 const admin = Meteor.users.findOne({_id:user._id});
                 if(admin.settings.isAdmin){
                     Meteor.users.remove(_id);
-                    return [{status:true,message:'Account deleted'}];
+                    return [{status:"success",message:'Account deleted'}];
                 }
-                return [{status:false,message:'Error while deleting'}];
+                return [{status:"error",message:'Error while deleting'}];
             }
             throw new Error('Unauthorized')
         },
@@ -105,7 +105,7 @@ export default {
                         }
                     }
                 );
-                return [{status:true,message:'Edit successful'}];
+                return [{status:"success",message:'Edit successful'}];
             }
             throw new Error('Unauthorized')
         }

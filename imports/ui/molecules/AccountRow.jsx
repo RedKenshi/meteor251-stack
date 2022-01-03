@@ -54,6 +54,7 @@ export const AccountRow = props => {
         }).then((data)=>{
             props.loadAccounts();
             setModalState(true)
+            props.toastQRM(data.data.setAvatar)
         })
     }
     const setActivate = activate => {
@@ -66,6 +67,7 @@ export const AccountRow = props => {
         }).then((data)=>{
             props.loadAccounts();
             setModalState(true)
+            props.toastQRM(data.data.activateAccount)
         })
     }
     const setAdmin = admin => {
@@ -78,6 +80,7 @@ export const AccountRow = props => {
         }).then((data)=>{
             props.loadAccounts();
             setModalState(true)
+            props.toastQRM(data.data.setAdmin)
         })
     }
     const setOwner = owner => {
@@ -90,6 +93,7 @@ export const AccountRow = props => {
         }).then((data)=>{
             props.loadAccounts();
             setModalState(true)
+            props.toastQRM(data.data.setOwner)
         })
     }
     const deleteAcc = () => {
@@ -101,6 +105,7 @@ export const AccountRow = props => {
         }).then((data)=>{
             props.loadAccounts();
             setModalState(false)
+            props.toastQRM(data.data.deleteAccount)
         })
     }
 

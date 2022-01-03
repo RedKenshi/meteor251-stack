@@ -2,12 +2,10 @@ import React, { useState, useEffect } from "react"
 import { UserContext } from '../../contexts/UserContext';
 import { gql } from 'graphql-tag';
 import AccountRow from "../molecules/AccountRow";
-import { useIsMount } from "../useIsMount";
 import _ from 'lodash';
 
 const Accounts = props => {
 
-  const isMount = useIsMount();
   const [active, setActive] = useState('accounts');
   const [userFilter, setUserFilter] = useState('');
   const [accountsRaw, setAccountsRaw] = useState([]);
@@ -37,9 +35,7 @@ const Accounts = props => {
     })
   }
   useEffect(() => {
-    if(isMount){
-      loadAccounts();
-    }
+    loadAccounts();
   })
 
   return (

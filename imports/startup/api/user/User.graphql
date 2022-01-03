@@ -10,12 +10,12 @@ type User{
 }
 
 type QueryResultMessage{
-    status: Boolean!
+    status: String!
     message : String!
 }
 
 type QueryResultComplex{
-    status: Boolean!
+    status: String!
     message : String!
     obj:String
 }

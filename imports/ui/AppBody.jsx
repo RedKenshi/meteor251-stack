@@ -12,6 +12,9 @@ import Accounts from './pages/Accounts.jsx';
 
 export const AppBody = props => {
     if(Meteor.userId() != null){
+        if(props.isActivated == "loading"){
+            return <p>loading ...</p>
+        }
         if(props.isActivated){
             return (
                 <Routes>
