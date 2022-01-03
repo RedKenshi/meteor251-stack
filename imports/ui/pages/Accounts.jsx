@@ -22,7 +22,7 @@ const Accounts = props => {
     activated
   }}`;
   const accounts = () => {
-    return accountsRaw.filter(a=> a.firstname.toLowerCase().includes(userFilter) || a.lastname.toLowerCase().includes(userFilter) || a.mail.toLowerCase().includes(userFilter))
+    return accountsRaw.filter(a=> a.firstname.toLowerCase().includes(userFilter.toLowerCase()) || a.lastname.toLowerCase().includes(userFilter.toLowerCase()) || a.mail.toLowerCase().includes(userFilter.toLowerCase()))
   }
   const handleFilter = value => {
     console.log(value)
