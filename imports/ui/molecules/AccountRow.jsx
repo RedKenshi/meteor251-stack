@@ -240,7 +240,7 @@ export const AccountRow = props => {
                                     <p> Admin : </p>
                                     {(!props.account.isOwner  ? 
                                         <div className="tags spaced-from-left8 inline has-addons">
-                                            <span onClick={()=>setModalState("unadmin")} className={"tag pointable" + (props.account.isAdmin ? " is-dark" : " is-danger")}>Non</span>
+                                            <span onClick={()=>setModalState("unadmin")} className={"tag pointable" + (props.account.isAdmin ? " is-dark" : " is-danger")}>No</span>
                                             <span onClick={()=>setModalState("admin")} className={"tag pointable" + (props.account.isAdmin ? " is-success" : " is-dark")}>Admin</span>
                                         </div>
                                         :
@@ -251,7 +251,7 @@ export const AccountRow = props => {
                                     <p> Owner : </p>
                                     {(props.isOwner ? 
                                         <div className="tags spaced-from-left8 inline has-addons">
-                                            <span onClick={()=>setModalState("unowner")} className={"tag pointable" + (props.account.isOwner ? " is-dark" : " is-danger")}>Non</span>
+                                            <span onClick={()=>setModalState("unowner")} className={"tag pointable" + (props.account.isOwner ? " is-dark" : " is-danger")}>No</span>
                                             <span onClick={()=>setModalState("owner")} className={"tag pointable" + (props.account.isOwner ? " is-success" : " is-dark")}>Owner</span>
                                         </div>
                                         :
@@ -356,9 +356,9 @@ export const AccountRow = props => {
                 </td>
                 <td>{props.account.firstname + " " + props.account.lastname}</td>
                 <td>{props.account.mail}</td>
-                <td>{(props.account.activated ? <span className="tag is-success">Oui</span> : <span className="tag is-danger">Non</span>)}</td>
-                <td>{(props.account.isAdmin ? <span className="tag is-success">Oui</span> : <span className="tag is-dark">Non</span>)}</td>
-                <td>{(props.account.isOwner ? <span className="tag is-info">Oui</span> : <span className="tag is-dark">Non</span>)}</td>
+                <td>{(props.account.activated ? <span className="tag is-success">Yes</span> : <span className="tag is-danger">No</span>)}</td>
+                <td>{(props.account.isAdmin ? <span className="tag is-success">Yes</span> : <span className="tag is-dark">No</span>)}</td>
+                <td>{(props.account.isOwner ? <span className="tag is-info">Yes</span> : <span className="tag is-dark">No</span>)}</td>
                 <td className="is-narrow">
                     <Button color="info" size="small" light onClick={()=>setModalState("user")} icon="far fa-user"/>
                     <div className={"modal" + (modalState != false ? " is-active" : "")}>

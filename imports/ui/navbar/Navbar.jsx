@@ -15,7 +15,7 @@ export const Navbar = props => {
     {
       name:"home",
       active:"home",
-      label:"Accueil",
+      label:"Home",
       display:true,
       icon:"fas fa-home",
       color:"blue"
@@ -79,7 +79,7 @@ export const Navbar = props => {
         <ul className="navbar-nav">
           <li className="logo" >
             <a className="nav-link nav-link-logo" key={"logout"}>
-              <span className="link-text">Beorn Classrooms</span>
+              <span className="link-text">PLATFORM TITLE</span>
               <DuoIcon name="double-chevron-right" color="blue"/>
             </a>
           </li>

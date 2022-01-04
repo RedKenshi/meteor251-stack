@@ -67,7 +67,7 @@ const Accounts = props => {
       </div>
       <div className="column">
         <div className="box">
-          <input className="input is-large" name="usersFilter" onChange={e=>handleFilter(e.target.value)} placeholder='Rechercher un compte ...'/>
+          <input className="input is-large" name="usersFilter" onChange={e=>handleFilter(e.target.value)} placeholder='Search account by name or mail ...'/>
         </div>
         <table className="table is-fullwidth is-stripped is-hoverable">
           <thead>
