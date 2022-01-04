@@ -87,13 +87,17 @@ ul,li { margin:0; padding:0; }
 .spaced-from-left16{margin-left:16px;}
 .spaced-from-right16{margin-right:16px;}
 
+.image.is-192x192 {height: 192px;width: 192px;}
+.image.is-256x256 {height: 256px;width: 256px;}
+.image.is-512x512 {height: 512px;width: 512px;}
+
 .data-display{
     display: grid;
     grid-template-columns: auto 1fr;
-    &:nth-child(1n){
+    & :nth-child(1n){
         place-self: center end;
     }
-    &:nth-child(2n){
+    & :nth-child(2n){
         place-self: center start;
     }
     & > p{

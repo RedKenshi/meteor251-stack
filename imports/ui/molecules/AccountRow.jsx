@@ -8,7 +8,7 @@ export const AccountRow = props => {
 
     //HOOK STATE
     const [modalState, setModalState] = useState(false);
-    const [avatarCollection, setAvatarCollection] = useState("spring");
+    const [avatarCollection, setAvatarCollection] = useState("animals");
 
     //GRAPHQL QUERIES AND MUTATIONS
     const setOwnerQuery = gql`mutation setOwner($owner:Boolean!,$_id:String!){
@@ -112,7 +112,7 @@ export const AccountRow = props => {
     //CONTENT GETTER
     const getAvatarCollection = () => {
         const avatars = [];
-        for (let i = 1; i <= 50; i++) {avatars.push(i)}
+        for (let i = 1; i <= 60; i++) {avatars.push(i)}
         return (
             <div className="flex centered">
                 {avatars.map(a=>{
@@ -141,11 +141,17 @@ export const AccountRow = props => {
                             <div className="box sticky">
                             <p className="menu-label">Categories</p>
                                 <ul className="menu-list">
-                                    <li onClick={()=>setAvatarCollection("spring")}>
+                                   {/*<li onClick={()=>setAvatarCollection("spring")}>
                                         <a className={avatarCollection == "spring" ? "is-active" : ""}>Spring</a>
                                     </li>
                                     <li onClick={()=>setAvatarCollection("halloween")}>
                                         <a className={avatarCollection == "halloween" ? "is-active" : ""}>Halloween</a>
+                                    </li>
+                                    <li onClick={()=>setAvatarCollection("graphic")}>
+                                        <a className={avatarCollection == "graphic" ? "is-active" : ""}>Graphic</a>
+                                    </li>*/}
+                                    <li onClick={()=>setAvatarCollection("animals")}>
+                                        <a className={avatarCollection == "animals" ? "is-active" : ""}>Animals</a>
                                     </li>
                                 </ul>
                             </div>                    
@@ -209,19 +215,17 @@ export const AccountRow = props => {
                 return(
                     <Fragment>
                         <div className="card evenshadow">
-                            <div className="card-content">
-                                <div className="media">
-                                    <div className="media-left">
-                                        <figure onClick={()=>setModalState("avatar")} className="image pointable is-128x128">
-                                            <img src={"/avatar/"+props.account.avatar+".svg"} alt="Placeholder image"/>
-                                        </figure>
-                                    </div>
-                                    <div className="media-content">
-                                        <p className="title is-4">{props.account.firstname + " " + props.account.lastname}</p>
-                                        <p className="subtitle is-6">{props.account.mail}</p>
-                                    </div>
+                            <div className="card-content user-id-card">                                
+                                <div className="avatar margined16">
+                                    <figure onClick={()=>setModalState("avatar")} className="image pointable is-192x192">
+                                        <img src={"/avatar/"+props.account.avatar+".svg"} alt="Placeholder image"/>
+                                    </figure>
                                 </div>
-                                <div className="content data-display">
+                                <div className="user-infos">
+                                    <p className="title is-4">{props.account.firstname + " " + props.account.lastname}</p>
+                                    <p className="subtitle is-6">{props.account.mail}</p>
+                                </div>
+                                <div className="user-settings data-display">
                                     <p> Activated : </p>
                                     {(!props.account.isOwner  ? 
                                         <div className="tags spaced-from-left8 inline has-addons">
@@ -345,6 +349,11 @@ export const AccountRow = props => {
         <Fragment>
             <tr key={props.key}>
                 <td>{props.index+1}</td>
+                <td>
+                    <figure className="image is-48x48">
+                        <img src={"/avatar/"+props.account.avatar+".svg"}/>
+                    </figure>
+                </td>
                 <td>{props.account.firstname + " " + props.account.lastname}</td>
                 <td>{props.account.mail}</td>
                 <td>{(props.account.activated ? <span className="tag is-success">Oui</span> : <span className="tag is-danger">Non</span>)}</td>

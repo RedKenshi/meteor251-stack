@@ -81,3 +81,19 @@
         }
     }
 }
+.user-id-card{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 16px;
+    & > .avatar{
+        grid-row-end: span 2;
+    }
+    & > .user-infos{
+        grid-column-start: 2;
+    }
+    & > .user-settings{
+        place-self: start;
+        grid-column-start: 2;
+    }
+}

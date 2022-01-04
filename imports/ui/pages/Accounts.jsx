@@ -73,6 +73,7 @@ const Accounts = props => {
           <thead>
             <tr>
               <td>#</td>
+              <td></td>
               <td>Name</td>
               <td>Mail</td>
               <td>Activated</td>

@@ -86,6 +86,23 @@
   align-items: center;
 }
 
+.user-id-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 16px;
+}
+.user-id-card > .avatar {
+  grid-row-end: span 2;
+}
+.user-id-card > .user-infos {
+  grid-column-start: 2;
+}
+.user-id-card > .user-settings {
+  place-self: start;
+  grid-column-start: 2;
+}
+
 /*COLORS FROM FLAT UI COLOR PALETTE 1*/
 /*COLORS FROM SEMANTIC UI REACT BUTTONS*/
 /*3 COLORS THEME*/
@@ -228,14 +245,29 @@ ul, li {
   margin-right: 16px;
 }
 
+.image.is-192x192 {
+  height: 192px;
+  width: 192px;
+}
+
+.image.is-256x256 {
+  height: 256px;
+  width: 256px;
+}
+
+.image.is-512x512 {
+  height: 512px;
+  width: 512px;
+}
+
 .data-display {
   display: grid;
   grid-template-columns: auto 1fr;
 }
-.data-display:nth-child(1n) {
+.data-display :nth-child(1n) {
   place-self: center end;
 }
-.data-display:nth-child(2n) {
+.data-display :nth-child(2n) {
   place-self: center start;
 }
 .data-display > p {

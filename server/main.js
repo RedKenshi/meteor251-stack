@@ -7,7 +7,7 @@ Accounts.onCreateUser(function(options, user) {
   user.profile = options.profile || {};
   user.profile.firstname = options.profile.firstname;
   user.profile.lastname = options.profile.lastname;
-  user.profile.avatar = "spring/"+padStart(Math.floor(Math.random() * 50),3,"0");
+  user.profile.avatar = "animals/"+padStart(Math.floor(Math.random() * 60),3,"0");
   user.settings = options.settings || {};
   if(Meteor.users.find().count() == 0){
       user.settings.isOwner = true;
