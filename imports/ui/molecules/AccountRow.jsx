@@ -117,7 +117,7 @@ export const AccountRow = props => {
             <div className="flex centered">
                 {avatars.map(a=>{
                     return(
-                        <figure onClick={()=>setAvatar(a)} key={a} className="image is-64x64 margined8">
+                        <figure onClick={()=>setAvatar(a)} key={a} className="image is-96x96 margined8">
                             <img className="pointable" src={"/avatar/" + avatarCollection + "/" + padStart(a.toString(),3,"0") + ".svg"}/>
                         </figure>
                     )
