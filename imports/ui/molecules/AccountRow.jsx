@@ -228,41 +228,41 @@ export const AccountRow = props => {
                                 <div className="user-settings data-display">
                                     <p> Activated : </p>
                                     {(!props.account.isOwner  ? 
-                                        <div className="tags spaced-from-left8 inline has-addons">
+                                        <div className="tags margined-left8 inline has-addons">
                                             <span onClick={()=>setModalState("deactivate")} className={"tag pointable" + (props.account.activated ? " is-dark" : " is-danger")}>Deactivated</span>
                                             <span onClick={()=>setModalState("activate")} className={"tag pointable" + (props.account.activated ? " is-success" : " is-dark")}>Activated</span>
                                         </div>
                                         :
-                                        <div className="tags spaced-from-left8 inline has-addons">
+                                        <div className="tags margined-left8 inline has-addons">
                                             <span className={"tag pointable" + (props.account.activated ? " is-success" : " is-danger")}>{(props.account.activated ? "Yes" : "No")}</span>
                                         </div>
                                     )}
                                     <p> Admin : </p>
                                     {(!props.account.isOwner  ? 
-                                        <div className="tags spaced-from-left8 inline has-addons">
+                                        <div className="tags margined-left8 inline has-addons">
                                             <span onClick={()=>setModalState("unadmin")} className={"tag pointable" + (props.account.isAdmin ? " is-dark" : " is-danger")}>No</span>
                                             <span onClick={()=>setModalState("admin")} className={"tag pointable" + (props.account.isAdmin ? " is-success" : " is-dark")}>Admin</span>
                                         </div>
                                         :
-                                        <div className="tags spaced-from-left8 inline has-addons">
+                                        <div className="tags margined-left8 inline has-addons">
                                             <span className={"tag pointable" + (props.account.isAdmin ? " is-success" : " is-danger")}>{(props.account.isAdmin ? "Yes" : "No")}</span>
                                         </div>
                                     )}
                                     <p> Owner : </p>
                                     {(props.isOwner ? 
-                                        <div className="tags spaced-from-left8 inline has-addons">
+                                        <div className="tags margined-left8 inline has-addons">
                                             <span onClick={()=>setModalState("unowner")} className={"tag pointable" + (props.account.isOwner ? " is-dark" : " is-danger")}>No</span>
                                             <span onClick={()=>setModalState("owner")} className={"tag pointable" + (props.account.isOwner ? " is-success" : " is-dark")}>Owner</span>
                                         </div>
                                         :
-                                        <div className="tags spaced-from-left8 inline has-addons">
+                                        <div className="tags margined-left8 inline has-addons">
                                             <span className={"tag pointable" + (props.account.isOwner ? " is-success" : " is-danger")}>{(props.account.isOwner ? "Yes" : "No")}</span>
                                         </div>
                                     )}
                                 </div>
                             </div>
                         </div>
-                        <div className="box evenshadow flex centered spaced-from-top16">
+                        <div className="box evenshadow flex centered margined-top16">
                             {getAccountActions()}
                         </div>
                     </Fragment>

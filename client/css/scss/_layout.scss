@@ -21,12 +21,14 @@
 }
 .main-container-navbar{
     display: block;
-    height: 100vh;
+    height: 100%;
+    & .columns{
+        margin: 0;
+    }
 }
 .main-content-navbar{
     margin-left: 5rem;
     height: 100%;
-    padding: 48px 32px 48px 64px;
 }
 .page{
     width: 100%;
@@ -58,6 +60,22 @@
             min-width: 8em;
             text-align: justify;
         }
+    }
+    & .meteor-title-container{
+        margin:auto;
+        & .meteor-title{
+            background:linear-gradient(315deg, #f9d29d 0%, #ffd8cb 74%);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            font-size: 7em;
+            font-weight: bold;
+            margin: 16px;
+            color:transparent;
+        }
+    }
+    & p, .scrollme-container{
+        font-size: 1.5em;
     }
 }
 .page-content{

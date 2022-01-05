@@ -39,7 +39,7 @@ const Accounts = props => {
   })
 
   return (
-    <div className="page is-variable is-8 columns">
+    <div className="page padded is-8 columns">
       <div className="column is-narrow">
         <div className="box">
           <p className="menu-label">Administration</p>

@@ -109,7 +109,7 @@ const AppBody = props => {
                         <Button onClick={(error ? ()=>{} : register)} disabled={error} light icon="fas fa-arrow-right" color="success" text="Register"/>
                         <Button onClick={()=>setAction("login")} light color="info" text="Login"/>
                     </div>
-                    <div className={"message " + errorColor + " is-small margined"+ (error ? "" : " hidden")}>
+                    <div className={"message " + errorColor + " is-small margined-auto"+ (error ? "" : " hidden")}>
                         <div className="message-header">
                             <p>{errorTitle}</p>
                         </div>
